@@ -101,7 +101,22 @@ OPDiagramTest >> testFromJsonComplex [
 OPDiagramTest >> testModel [
 	| model project |
 	model := OPTestContainerModel new.
-	view := OPDiagram new model: model.
+	view := OPDiagram new.
+	self assert: view modelType equals: 'UndefinedObject'.
+	self assert: view model isNil.
+	self assert: view modelName equals: 'UndefinedObject'.
+	view model: model.
+	self assert: view modelName equals: 'container'.
+	self assert: view modelType equals: 'OPTestContainerModel'.
+	self assert: view model class equals: OPTestContainerModel.
+	self assert: view model dependents class equals: Array.
+	self assertEmpty: view model dependents.
+	self assert: view model name equals: 'container'.
+	self
+		assert: view model entities class
+		equals: OrderedCollection.
+	self assertEmpty: view model entities.
+	self assert: view modelName equals: 'container'.
 	self assert: view model equals: model
 ]
 
