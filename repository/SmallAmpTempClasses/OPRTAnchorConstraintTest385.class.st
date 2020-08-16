@@ -34,12 +34,35 @@ OPRTAnchorConstraintTest385 >> testConnectionSegmentsFor_amp [
 	(RTLineSegment from: 0 @ 50 to: 50 @ 100).
 	(RTLineSegment from: 50 @ 100 to: (100 - (target width / 2)) @ 100)}.
 	segments := connectionAnchor connectionSegmentsFor: connection.
-	self
-		assert: connectionAnchor minDistance equals: 0;
-		assert: connectionAnchor element class equals: RTElement;
-		assertEmpty: connectionAnchor element incomingEdges;
-		assert: connectionAnchor edge class equals: RTEdge;
-		assert: connectionAnchor balance equals: 0
+	self assert: segments class equals: Array.
+	self assert: segments size equals: 3.
+	self assert: (segments at: 1) class equals: RTLineSegment.
+	self assert: (segments at: 1) left equals: 0 @ 50.
+	self deny: (segments at: 1) isHorizontal.
+	self assert: (segments at: 1) right equals: 0 @ 50.
+	self assert: (segments at: 1) from equals: 0.0 @ 15.
+	self assert: (segments at: 1) to equals: 0 @ 50.
+	self assert: (segments at: 1) isVertical.
+	self assert: (segments at: 1) bottom equals: 0.0 @ 15.
+	self assert: (segments at: 1) top equals: 0 @ 50.
+	self assert: (segments at: 2) class equals: RTLineSegment.
+	self assert: (segments at: 2) left equals: 0 @ 50.
+	self deny: (segments at: 2) isHorizontal.
+	self assert: (segments at: 2) right equals: 50 @ 100.
+	self assert: (segments at: 2) from equals: 0 @ 50.
+	self assert: (segments at: 2) to equals: 50 @ 100.
+	self deny: (segments at: 2) isVertical.
+	self assert: (segments at: 2) bottom equals: 0 @ 50.
+	self assert: (segments at: 2) top equals: 50 @ 100.
+	self assert: (segments at: 3) class equals: RTLineSegment.
+	self assert: (segments at: 3) left equals: 50 @ 100.
+	self assert: (segments at: 3) isHorizontal.
+	self assert: (segments at: 3) right equals: 85 @ 100.0.
+	self assert: (segments at: 3) from equals: 50 @ 100.
+	self assert: (segments at: 3) to equals: 85 @ 100.0.
+	self deny: (segments at: 3) isVertical.
+	self assert: (segments at: 3) bottom equals: 85 @ 100.0.
+	self assert: (segments at: 3) top equals: 85 @ 100.0
 ]
 
 { #category : #'as yet unclassified' }
@@ -52,14 +75,19 @@ OPRTAnchorConstraintTest385 >> testConnectionSegmentsFor_amp_A1 [
 
 	<madeBySmallAmp>
 	| segments aCollection |
-	expected := {(RTLineSegment from: 0 @ (source height / 2) to: 0 @ 50).
-	(RTLineSegment from: 0 @ 50 to: 50 @ 100).
-	(RTLineSegment from: 50 @ 100 to: (100 - (target width / 2)) @ 100)}.
-	aCollection := connectionAnchor
-		connectionSegmentsFor: connection;
-		anchorSegment.
-	self assert:
-		aCollection class equals: Array
+	aCollection := connectionAnchor anchorSegment.
+	self assert: aCollection class equals: Array.
+	self assert: aCollection size equals: 2.
+	self assert: (aCollection at: 1) class equals: RTLineSegment.
+	self assert: (aCollection at: 1) left equals: 0 @ 50.
+	self deny: (aCollection at: 1) isHorizontal.
+	self assert: (aCollection at: 1) right equals: 0 @ 50.
+	self assert: (aCollection at: 1) from equals: 0.0 @ 15.
+	self assert: (aCollection at: 1) to equals: 0 @ 50.
+	self assert: (aCollection at: 1) isVertical.
+	self assert: (aCollection at: 1) bottom equals: 0.0 @ 15.
+	self assert: (aCollection at: 1) top equals: 0 @ 50.
+	self assert: (aCollection at: 2) equals: 0.0 @ 15.0
 ]
 
 { #category : #'as yet unclassified' }

@@ -48,8 +48,9 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A0 [
 	aMAStringDescription := desc
 		descriptionAccessor: #name;
 		descriptionDefaultValue.
-	self assert:
-		aMAStringDescription class equals: MAStringDescription
+	self assert: aMAStringDescription class equals: MAStringDescription.
+	self assert: aMAStringDescription priority equals: 42.
+	self assert: aMAStringDescription label equals: 'Default Value'
 ]
 
 { #category : #'as yet unclassified' }
@@ -86,9 +87,18 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A1 [
 		descriptionAccessor: #name;
 		descriptionMultiplicity.
 	self
-		assert:
-			aMASingleOptionDescription class
-		equals: MASingleOptionDescription
+		assert: aMASingleOptionDescription class
+		equals: MASingleOptionDescription.
+	self assert: aMASingleOptionDescription label equals: 'Multiplicity'.
+	self assert: aMASingleOptionDescription priority equals: 9.
+	self
+		assert: aMASingleOptionDescription allOptions class
+		equals: Array.
+	self assert: aMASingleOptionDescription allOptions size equals: 5.
+	self
+		assert: aMASingleOptionDescription allOptions
+		equals: #(nil '0..*' '0..1' '1..*' '1..1').
+	self assert: aMASingleOptionDescription isExtensible
 ]
 
 { #category : #'as yet unclassified' }
@@ -113,8 +123,9 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A10 [
 	aMAStringDescription := desc
 		descriptionAccessor: #name;
 		descriptionName.
-	self assert:
-		aMAStringDescription class equals: MAStringDescription
+	self assert: aMAStringDescription class equals: MAStringDescription.
+	self assert: aMAStringDescription priority equals: 2.
+	self assert: aMAStringDescription label equals: 'Name'
 ]
 
 { #category : #'as yet unclassified' }
@@ -146,9 +157,18 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A11 [
 		descriptionAccessor: #name;
 		descriptionAggregation.
 	self
-		assert:
-			aMASingleOptionDescription class
-		equals: MASingleOptionDescription
+		assert: aMASingleOptionDescription class
+		equals: MASingleOptionDescription.
+	self assert: aMASingleOptionDescription label equals: 'Aggregation'.
+	self assert: aMASingleOptionDescription priority equals: 3.
+	self
+		assert: aMASingleOptionDescription allOptions class
+		equals: Array.
+	self assert: aMASingleOptionDescription allOptions size equals: 4.
+	self
+		assert: aMASingleOptionDescription allOptions
+		equals: #(nil #composite #none #shared).
+	self assert: aMASingleOptionDescription sorted
 ]
 
 { #category : #'as yet unclassified' }
@@ -177,8 +197,10 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A2 [
 	aMAStringDescription := desc
 		descriptionAccessor: #name;
 		descriptionType.
-	self assert:
-		aMAStringDescription class equals: MAStringDescription
+	self assert: aMAStringDescription class equals: MAStringDescription.
+	self assert: aMAStringDescription isReadonly.
+	self assert: aMAStringDescription priority equals: 1.
+	self assert: aMAStringDescription label equals: ''
 ]
 
 { #category : #'as yet unclassified' }
@@ -208,8 +230,10 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A3 [
 	aMABooleanDescription := desc
 		descriptionAccessor: #name;
 		descriptionIsNavigable.
-	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Navigable'.
+	self assert: aMABooleanDescription priority equals: 10
 ]
 
 { #category : #'as yet unclassified' }
@@ -243,9 +267,21 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A4 [
 		descriptionAccessor: #name;
 		descriptionVisibility.
 	self
-		assert:
-			aMASingleOptionDescription class
-		equals: MASingleOptionDescription
+		assert: aMASingleOptionDescription class
+		equals: MASingleOptionDescription.
+	self
+		assert: aMASingleOptionDescription class
+		equals: MASingleOptionDescription.
+	self assert: aMASingleOptionDescription label equals: 'Visibility'.
+	self assert: aMASingleOptionDescription priority equals: 8.
+	self
+		assert: aMASingleOptionDescription allOptions class
+		equals: Array.
+	self assert: aMASingleOptionDescription allOptions size equals: 6.
+	self
+		assert: aMASingleOptionDescription allOptions
+		equals: #(nil nil #package #private #protected #public).
+	self assert: aMASingleOptionDescription sorted
 ]
 
 { #category : #'as yet unclassified' }
@@ -270,8 +306,10 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A5 [
 	aMABooleanDescription := desc
 		descriptionAccessor: #name;
 		descriptionIsUnique.
-	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Unique'.
+	self assert: aMABooleanDescription priority equals: 36
 ]
 
 { #category : #'as yet unclassified' }
@@ -296,8 +334,10 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A6 [
 	aMABooleanDescription := desc
 		descriptionAccessor: #name;
 		descriptionIsDerived.
-	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Derived'.
+	self assert: aMABooleanDescription priority equals: 15
 ]
 
 { #category : #'as yet unclassified' }
@@ -322,8 +362,10 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A7 [
 	aMABooleanDescription := desc
 		descriptionAccessor: #name;
 		descriptionIsOrdered.
-	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Ordered'.
+	self assert: aMABooleanDescription priority equals: 35
 ]
 
 { #category : #'as yet unclassified' }
@@ -349,7 +391,10 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A8 [
 		descriptionAccessor: #name;
 		descriptionIsStatic.
 	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+		aMABooleanDescription class equals: MABooleanDescription.
+		self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Static'.
+	self assert: aMABooleanDescription priority equals: 11
 ]
 
 { #category : #'as yet unclassified' }
@@ -375,5 +420,8 @@ OPUmlPropertyMagritteDescriptionsTest237 >> testDescriptionAccessor_amp_A9 [
 		descriptionAccessor: #name;
 		descriptionIsReadOnly.
 	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+		aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Read Only'.
+	self assert: aMABooleanDescription priority equals: 14
 ]

@@ -31,6 +31,7 @@ OPUmlEdgeTest127 >> testRemoveFromView_amp [
 	self
 		assert: element source class equals: OPUmlLabel;
 		assert: element target class equals: OPUmlLabel.
+	SmallAmp assertionsFor: element .
 	lbl renderIn: v.
 	element remove
 ]
@@ -44,6 +45,7 @@ OPUmlEdgeTest127 >> testRemoveFromView_amp_A18 [
 	v := RTView new.
 	element renderIn: v.
 	lbl renderIn: v.
+	element createConnection.
 	element remove.
-	self should: [ element createConnection ] raise: MessageNotUnderstood
+	self should: [ element createConnection ] raise: MessageNotUnderstood "#rtElement was sent to nil"
 ]

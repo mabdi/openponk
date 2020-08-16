@@ -13,6 +13,14 @@ OPUmlEnumerationControllerTest187 class >> allTestSelectors [
 ]
 
 { #category : #'as yet unclassified' }
+OPUmlEnumerationControllerTest187 >> testCreateModel [
+	| anOPUMLEnumeration |
+	anOPUMLEnumeration := controller createModel.
+	self assert: anOPUMLEnumeration class equals: OPUMLEnumeration.
+	self assert: anOPUMLEnumeration name equals: 'Enumeration'
+]
+
+{ #category : #'as yet unclassified' }
 OPUmlEnumerationControllerTest187 >> testModelClass_amp_A3 [
 	"I test correctness of: 
 
@@ -27,8 +35,8 @@ OPUmlEnumerationControllerTest187 >> testModelClass_amp_A3 [
 	anOPUMLEnumeration := controller
 		modelClass;
 		createModel.
-	self assert:
-		anOPUMLEnumeration class equals: OPUMLEnumeration
+	self assert: anOPUMLEnumeration class equals: OPUMLEnumeration.
+	self assert: anOPUMLEnumeration name equals: 'Enumeration'
 ]
 
 { #category : #'as yet unclassified' }
@@ -47,8 +55,8 @@ OPUmlEnumerationControllerTest187 >> testRemoveEmpty_amp_A8 [
 	aCollection := controller
 		showWithoutDependentInDiagram: diagramController;
 		allShowableElements.
-	self assert:
-		aCollection class equals: Array.
+	self assert: aCollection class equals: Array.
+	self assertEmpty: aCollection.
 	controller remove
 ]
 
@@ -79,8 +87,11 @@ OPUmlEnumerationControllerTest187 >> testRemoveWithLiteral_amp_A8 [
 	aCollection := controller
 		showWithoutDependentInDiagram: diagramController;
 		allShowableElements.
-	self assert:
-		aCollection class equals: Array.
+	self assert: aCollection class equals: Array.
+	self assert: aCollection size equals: 1.
+	self
+		assert: (aCollection at: 1) class
+		equals: OPUMLEnumerationLiteral.
 	controller remove
 ]
 

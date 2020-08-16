@@ -31,8 +31,9 @@ OPUmlOperationControllerTest85 >> testModelClass_amp_A0 [
 	controller modelClass.
 	self assert: controller isHideable.
 	aMABooleanDescription := controller descriptionIsAbstract.
-	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Abstract'.
+	self assert: aMABooleanDescription priority equals: 5
 ]
 
 { #category : #'as yet unclassified' }
@@ -49,9 +50,8 @@ OPUmlOperationControllerTest85 >> testModelClass_amp_A3 [
 
 	<madeBySmallAmp>
 	| aMABooleanDescription |
-	aMABooleanDescription := controller
-		modelClass;
-		descriptionIsStatic.
-	self assert:
-		aMABooleanDescription class equals: MABooleanDescription
+	aMABooleanDescription := controller descriptionIsStatic.
+	self assert: aMABooleanDescription class equals: MABooleanDescription.
+	self assert: aMABooleanDescription label equals: 'Is Static'.
+	self assert: aMABooleanDescription priority equals: 10
 ]

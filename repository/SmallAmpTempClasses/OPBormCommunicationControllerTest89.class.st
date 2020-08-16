@@ -46,5 +46,6 @@ OPBormCommunicationControllerTest89 >> testCreateModel_amp [
 
 	<madeBySmallAmp>
 	controller createModelIn: targetController model.
-	self assert: controller elementsToShowInside class equals: Array
+	self assert: controller elementsToShowInside class equals: Array.
+	self assertEmpty: controller elementsToShowInside
 ]

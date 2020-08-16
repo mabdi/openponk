@@ -31,13 +31,23 @@ OPDiagramTest414 >> testModel_amp_A0 [
 	model := OPTestContainerModel new.
 	anOPDiagram := OPDiagram new.
 	self
-		assert:
-			anOPDiagram notes isNil;
-		deny:
-			anOPDiagram isDefault.
+		assert: anOPDiagram notes isNil;
+		deny: anOPDiagram isDefault.
+	self assert: anOPDiagram modelType equals: 'UndefinedObject'.
+	self assert: anOPDiagram model isNil.
+	self assert: anOPDiagram modelName equals: 'UndefinedObject'.
 	view := anOPDiagram model: model.
-	self assert:
-		anOPDiagram modelName equals: 'container'.
+	self assert: anOPDiagram modelName equals: 'container'.
+	self assert: anOPDiagram modelType equals: 'OPTestContainerModel'.
+	self assert: anOPDiagram model class equals: OPTestContainerModel.
+	self assert: anOPDiagram model dependents class equals: Array.
+	self assertEmpty: anOPDiagram model dependents.
+	self assert: anOPDiagram model name equals: 'container'.
+	self
+		assert: anOPDiagram model entities class
+		equals: OrderedCollection.
+	self assertEmpty: anOPDiagram model entities.
+	self assert: anOPDiagram modelName equals: 'container'.
 	anOPDiagram modelType
 ]
 
@@ -48,7 +58,7 @@ OPDiagramTest414 >> testModel_amp_A5 [
 	model := OPTestContainerModel new.
 	anOPDiagram := OPDiagram new.
 	view := anOPDiagram model: model.
-	self should: [ anOPDiagram newCopy ] raise: Error
+	self should: [ anOPDiagram newCopy ] raise: Error "Error: Instances of UndefinedObject are not indexable"
 ]
 
 { #category : #'as yet unclassified' }

@@ -29,16 +29,44 @@ OPPetriNetTest52 >> testAdd_amp [
 	super testAdd.
 	self setUp.
 	d := OPPetriNet new.
-	self
-		assert: d places class equals: OrderedCollection;
-		assert: d transitions class equals: OrderedCollection;
-		assert: d nodes class equals: OrderedCollection.
+	self assertEmpty: d arcs.
+	self assertEmpty: d places.
+	self assertEmpty: d transitions.
+	self assertEmpty: d elements.
+	self assertEmpty: d nodes.
+	self assertEmpty: d ownedElements.
 	first := OPPetriNetTransition new name: '1'.
 	d add: first.
+	self assert: d transitions size equals: 1.
+	self assert: (d transitions at: 1) class equals: OPPetriNetTransition.
+	self assert: d elements size equals: 1.
+	self assert: (d elements at: 1) class equals: OPPetriNetTransition.
+	self assert: d nodes size equals: 1.
+	self assert: (d nodes at: 1) class equals: OPPetriNetTransition.
+	self assert: d ownedElements size equals: 1.
+	self
+		assert: (d ownedElements at: 1) class
+		equals: OPPetriNetTransition.
 	second := OPPetriNetPTPlace new name: '2'.
 	d add: second.
+	self assert: d places size equals: 1.
+	self assert: (d places at: 1) class equals: OPPetriNetPTPlace.
+	self assert: d elements size equals: 2.
+	self assert: (d elements at: 2) class equals: OPPetriNetPTPlace.
+	self assert: d nodes size equals: 2.
+	self assert: (d nodes at: 2) class equals: OPPetriNetPTPlace.
+	self assert: d ownedElements size equals: 2.
+	self assert: (d ownedElements at: 2) class equals: OPPetriNetPTPlace.
 	t := OPPetriNetNormalArc from: d elements first to: d elements second.
-	d add: t
+	d add: t.
+	self assert: d arcs size equals: 1.
+	self assert: (d arcs at: 1) class equals: OPPetriNetNormalArc.
+	self assert: d elements size equals: 3.
+	self assert: (d elements at: 3) class equals: OPPetriNetNormalArc.
+	self assert: d ownedElements size equals: 3.
+	self
+		assert: (d ownedElements at: 3) class
+		equals: OPPetriNetNormalArc
 ]
 
 { #category : #'as yet unclassified' }

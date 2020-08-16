@@ -24,7 +24,11 @@ OPBormParticipantControllerTest165 >> testCannotConnectByDefault_amp [
 	controller model: model.
 	self
 		assert: controller elementsToShowInside class
-		equals: OrderedCollection
+		equals: OrderedCollection.
+	self
+		assert: controller elementsToShowInside class
+		equals: OrderedCollection.
+	self assertEmpty: controller elementsToShowInside
 ]
 
 { #category : #'as yet unclassified' }
