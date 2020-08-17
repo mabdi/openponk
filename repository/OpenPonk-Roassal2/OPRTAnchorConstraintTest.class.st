@@ -77,6 +77,24 @@ OPRTAnchorConstraintTest >> setUp [
 ]
 
 { #category : #tests }
+OPRTAnchorConstraintTest >> testAnchorSegment [
+	| aCollection |
+	aCollection := connectionAnchor anchorSegment.
+	self assert: aCollection class equals: Array.
+	self assert: aCollection size equals: 2.
+	self assert: (aCollection at: 1) class equals: RTLineSegment.
+	self assert: (aCollection at: 1) left equals: 0 @ 50.
+	self deny: (aCollection at: 1) isHorizontal.
+	self assert: (aCollection at: 1) right equals: 0 @ 50.
+	self assert: (aCollection at: 1) from equals: 0.0 @ 15.
+	self assert: (aCollection at: 1) to equals: 0 @ 50.
+	self assert: (aCollection at: 1) isVertical.
+	self assert: (aCollection at: 1) bottom equals: 0.0 @ 15.
+	self assert: (aCollection at: 1) top equals: 0 @ 50.
+	self assert: (aCollection at: 2) equals: 0.0 @ 15.0
+]
+
+{ #category : #tests }
 OPRTAnchorConstraintTest >> testConnectionPath [
 	self
 		assert: (connection shape pathFor: connection)
